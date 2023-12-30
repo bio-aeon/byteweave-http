@@ -1,7 +1,3 @@
-# Idris 2
+build/
 *.ttc
 *.ttm
-
-# Idris 1
-*.ibc
-*.o
