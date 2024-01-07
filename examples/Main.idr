@@ -5,4 +5,4 @@ import ByteWeave.Server
 import ByteWeave.InetSocketAddress
 
 main : IO ()
-main = run $ server (Hostname "127.0.0.1", 8000)
+main = run $ server "127.0.0.1:8000"
