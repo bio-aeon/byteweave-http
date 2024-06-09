@@ -1,0 +1,14 @@
+package byteweave-http
+
+authors = "Alexandr Chigrinets"
+depends = contrib >= 0.7.0
+modules = ByteWeave.Header,
+          ByteWeave.Headers,
+          ByteWeave.HttpVersion,
+          ByteWeave.InetSocketAddress,
+          ByteWeave.Method,
+          ByteWeave.Request,
+          ByteWeave.Server,
+          ByteWeave.Uri
+
+sourcedir = "src"
