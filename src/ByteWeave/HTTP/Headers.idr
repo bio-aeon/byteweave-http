@@ -1,6 +1,6 @@
-module ByteWeave.Headers
+module ByteWeave.HTTP.Headers
 
-import public ByteWeave.Header
+import public ByteWeave.HTTP.Header
 import Data.String.Parser
 
 public export

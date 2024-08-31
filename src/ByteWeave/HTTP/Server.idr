@@ -1,14 +1,14 @@
-module ByteWeave.Server
+module ByteWeave.HTTP.Server
 
 import Control.App
 import Control.App.Console
 import Network.Socket
-import ByteWeave.InetSocketAddress
-import ByteWeave.Method
-import ByteWeave.Header
-import ByteWeave.Headers
-import ByteWeave.HttpVersion
-import ByteWeave.Request
+import ByteWeave.HTTP.InetSocketAddress
+import ByteWeave.HTTP.Method
+import ByteWeave.HTTP.Header
+import ByteWeave.HTTP.Headers
+import ByteWeave.HTTP.HTTPVersion
+import ByteWeave.HTTP.Request
 
 netApp : Socket -> SocketAddress -> (PrimIO es => App es ())
 netApp sock addr = do

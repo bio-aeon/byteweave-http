@@ -1,18 +1,18 @@
-module ByteWeave.Request
+module ByteWeave.HTTP.Request
 
 import Data.String.Parser
 import Data.String
-import ByteWeave.Method
-import ByteWeave.HttpVersion
-import ByteWeave.Headers
-import ByteWeave.Uri
+import ByteWeave.HTTP.Method
+import ByteWeave.HTTP.HTTPVersion
+import ByteWeave.HTTP.Headers
+import ByteWeave.HTTP.Uri
 
 public export
 record Request where
   constructor MkRequest
   method : Method
   uri : Uri
-  httpVersion : (mjr ** mnr ** HttpVersion mjr mnr)
+  httpVersion : (mjr ** mnr ** HTTPVersion mjr mnr)
   headers : Headers
   body : String
 
@@ -24,7 +24,7 @@ Show Request where
     \{body}
     """
 
-requestLineParser : Parser (Method, Uri, (mjr ** mnr ** HttpVersion mjr mnr))
+requestLineParser : Parser (Method, Uri, (mjr ** mnr ** HTTPVersion mjr mnr))
 requestLineParser =
   (,,) <$> methodParser <* spaces1 <*> uriParser <* spaces1 <* string "HTTP/"
        <*> httpVersionParser <* string "\r\n"

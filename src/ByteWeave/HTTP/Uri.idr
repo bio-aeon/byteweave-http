@@ -1,4 +1,4 @@
-module ByteWeave.Uri
+module ByteWeave.HTTP.Uri
 
 import Data.String.Parser
 

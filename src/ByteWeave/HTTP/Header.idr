@@ -1,4 +1,4 @@
-module ByteWeave.Header
+module ByteWeave.HTTP.Header
 
 import Data.String.Parser
 

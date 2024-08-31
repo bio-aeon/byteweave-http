@@ -1,4 +1,4 @@
-module ByteWeave.InetSocketAddress
+module ByteWeave.HTTP.InetSocketAddress
 
 import public Data.Maybe
 import public Data.String
