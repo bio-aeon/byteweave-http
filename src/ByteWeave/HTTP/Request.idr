@@ -2,6 +2,7 @@ module ByteWeave.HTTP.Request
 
 import Data.String.Parser
 import Data.String
+
 import ByteWeave.HTTP.Method
 import ByteWeave.HTTP.HTTPVersion
 import ByteWeave.HTTP.Headers

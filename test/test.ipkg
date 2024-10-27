@@ -1,0 +1,9 @@
+package byteweave-http-test
+
+authors = "Alexandr Chigrinets"
+
+depends = byteweave-http
+
+main = ByteWeave.HTTP.Main
+executable = "byteweave-http-test"
+sourcedir = "src"

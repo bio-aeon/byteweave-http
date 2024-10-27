@@ -3,6 +3,7 @@ An experimental simple Idris 2 interface for HTTP services.
 
 ```idris
 import Control.App
+
 import ByteWeave.HTTP.Server
 import ByteWeave.HTTP.InetSocketAddress
 
