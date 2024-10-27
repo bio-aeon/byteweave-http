@@ -1,0 +1,10 @@
+[custom.all.byteweave-http]
+type = "local"
+path = "."
+ipkg = "byteweave-http.ipkg"
+test = "test/test.ipkg"
+
+[custom.all.byteweave-http-test]
+type = "local"
+path = "test"
+ipkg = "test.ipkg"

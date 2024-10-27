@@ -3,6 +3,7 @@ module ByteWeave.HTTP.Server
 import Control.App
 import Control.App.Console
 import Network.Socket
+
 import ByteWeave.HTTP.InetSocketAddress
 import ByteWeave.HTTP.Method
 import ByteWeave.HTTP.Header
