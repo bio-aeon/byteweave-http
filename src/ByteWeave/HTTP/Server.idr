@@ -10,19 +10,20 @@ import ByteWeave.HTTP.Header
 import ByteWeave.HTTP.Headers
 import ByteWeave.HTTP.HTTPVersion
 import ByteWeave.HTTP.Request
+import ByteWeave.HTTP.Logging
 
 netApp : Socket -> SocketAddress -> (PrimIO es => App es ())
 netApp sock addr = do
   Right (rawRequest, _) <- primIO $ recv sock 1024
-  | Left err => putStrLn $ "Error while receiving from the socket: " ++ show err
+  | Left err => logStringStdout <& "Error while receiving from the socket: " ++ show err
   Right _ <- primIO $ send sock rawRequest
-  | Left err => putStrLn $ "Error while sending to the socket: " ++ show err
+  | Left err => logStringStdout <& "Error while sending to the socket: " ++ show err
   primIO $ close sock
 
 serve : Socket -> (PrimIO es => App es ())
 serve sock = do
   Right (sock', addr) <- primIO $ accept sock
-  | Left err => putStrLn ("Error while accepting the socket: " ++ show err)
+  | Left err => logStringStdout <& "Error while accepting the socket: " ++ show err
   netApp sock' addr
   serve sock
 
@@ -30,15 +31,15 @@ export
 server : InetSocketAddress -> (PrimIO es => App es ())
 server (addr, port) = do
   Right sock <- primIO $ socket AF_INET Stream 0
-  | Left err => putStrLn $ "Error while creating a socket on port" ++ show port ++ ": " ++ show err
+  | Left err => logStringStdout <& "Error while creating a socket on port" ++ show port ++ ": " ++ show err
   0 <- primIO $ bind sock (Just addr) port
   | errno => do
-    putStrLn $ "Error while binding the socket: errno=" ++ show errno
+    logStringStdout <& "Error while binding the socket: errno=" ++ show errno
     primIO $ close sock 
   0 <- primIO $ listen sock
   | errno => do
-    putStrLn $ "Error while listening on the socket: errno=" ++ show errno
+    logStringStdout <& "Error while listening on the socket: errno=" ++ show errno
     primIO $ close sock
-  putStrLn $ "Server bound to address: " ++ show addr ++ ":" ++ show port
+  logStringStdout <& "Server bound to address: " ++ show addr ++ ":" ++ show port
   serve sock
   primIO $ close sock
