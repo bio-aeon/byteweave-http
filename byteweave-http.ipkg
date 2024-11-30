@@ -9,6 +9,7 @@ modules = ByteWeave.HTTP.Header
         , ByteWeave.HTTP.Headers
         , ByteWeave.HTTP.HTTPVersion
         , ByteWeave.HTTP.InetSocketAddress
+        , ByteWeave.HTTP.Logging
         , ByteWeave.HTTP.Method
         , ByteWeave.HTTP.Request
         , ByteWeave.HTTP.Response

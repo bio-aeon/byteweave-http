@@ -2,7 +2,9 @@ module ByteWeave.HTTP.Spec.Runner
 
 import System
 import Control.ANSI
+import Control.App
 
+import ByteWeave.HTTP.Logging
 import ByteWeave.HTTP.Spec.ANSI
 import ByteWeave.HTTP.Spec.SpecSummary
 import ByteWeave.HTTP.Spec.SpecTree
@@ -23,7 +25,7 @@ evaluateTree (Leaf (Left info)) state _ saveOut level = let out = evaluateLabel 
                                                             if saveOut then
                                                               pure $ addLine out state
                                                             else do 
-                                                              putStrLn out
+                                                              run $ logStringStdout <& out
                                                               pure state
 
 evaluateTree (Leaf (Right specIO)) state around saveOut level = resultToSummary !(around specIO) state saveOut level
@@ -47,5 +49,5 @@ export
 spec : SpecTree -> IO ()
 spec tree
   = do state <- specWithState tree
-       putStrLn $ "\n" ++ summaryToStr state
+       run $ logStringStdout <& "\n" ++ summaryToStr state
        if (failed state) > 0 then exitFailure else pure ()

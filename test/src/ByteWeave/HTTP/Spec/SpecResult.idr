@@ -1,7 +1,9 @@
 module ByteWeave.HTTP.Spec.SpecResult
 
 import Control.ANSI
+import Control.App
 
+import ByteWeave.HTTP.Logging
 import ByteWeave.HTTP.Spec.ANSI
 import ByteWeave.HTTP.Spec.SpecSummary
 
@@ -37,7 +39,7 @@ handleOutput : String -> SpecSummary -> (saveOut : Bool) -> IO SpecSummary
 handleOutput output summary saveOut = if saveOut then
                                         pure $ addLine output summary
                                       else do
-                                        putStrLn output
+                                        run $ logStringStdout <& output
                                         pure summary
 
 export
